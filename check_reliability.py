@@ -16,7 +16,7 @@ from run_experiment import BASE_DIR, clean_headers, load_data
 from run_stemming_comparison import make_pipeline
 
 
-OUT = BASE_DIR / "reliability_results"
+OUT = BASE_DIR / "experiment_results" / "reliability"
 SEEDS = (42, 7, 21, 73, 101)
 
 
@@ -55,7 +55,7 @@ def main() -> None:
     cleaned_train = train["text"].map(clean_headers)
     cleaned_test = test["text"].map(clean_headers)
     canonical_train = cleaned_train.map(canonical)
-    submitted = pd.read_csv(BASE_DIR / "predictions_stemming.csv", header=None).iloc[:, 0].to_numpy()
+    submitted = pd.read_csv(BASE_DIR / "prediction.csv", header=None).iloc[:, 0].to_numpy()
     if len(submitted) != len(test):
         raise ValueError("Submitted prediction count does not match the unlabeled test set")
 
@@ -99,7 +99,7 @@ def main() -> None:
             )
 
     frame = pd.DataFrame(results)
-    original = json.loads((BASE_DIR / "stemming_results" / "best_config.json").read_text(encoding="utf-8"))
+    original = json.loads((BASE_DIR / "experiment_results" / "stemming" / "best_config.json").read_text(encoding="utf-8"))
     seed42 = frame.loc[(frame["seed"] == 42) & frame["stemming"]].iloc[0]
     if abs(seed42["macro_f1"] - original["validation_macro_f1"]) > 1e-10:
         raise ValueError("Seed 42 failed to reproduce the original selected-model score")

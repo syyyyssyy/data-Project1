@@ -19,7 +19,7 @@ from run_experiment import BASE_DIR, RANDOM_STATE, clean_headers, load_data
 from run_stemming_comparison import StemmedTokenizer, vectorizer_params
 
 
-OUTPUT_DIR = BASE_DIR / "mlp_results"
+OUTPUT_DIR = BASE_DIR / "experiment_results" / "mlp"
 CANDIDATES = (
     {"hidden_layer_sizes": (50,), "alpha": 0.0001},
     {"hidden_layer_sizes": (100,), "alpha": 0.0001},
@@ -85,7 +85,7 @@ def main() -> None:
         "fit_seconds": reference_seconds,
     }
     write_json(OUTPUT_DIR / "svm_reference.json", svm_reference)
-    previous_svm = json.loads((BASE_DIR / "stemming_results" / "best_config.json").read_text(encoding="utf-8"))
+    previous_svm = json.loads((BASE_DIR / "experiment_results" / "stemming" / "best_config.json").read_text(encoding="utf-8"))
     if abs(svm_reference["validation_macro_f1"] - previous_svm["validation_macro_f1"]) > 1e-10:
         raise ValueError("SVM reference did not reproduce the previous validation score")
     print(f"SVM reference reproduced macro-F1={svm_reference['validation_macro_f1']:.4f}", flush=True)
@@ -147,7 +147,7 @@ def main() -> None:
         columns=[f"pred_{label}" for label in labels],
     ).to_csv(OUTPUT_DIR / "best_mlp_confusion_matrix.csv")
 
-    previous = json.loads((BASE_DIR / "stemming_results" / "best_config.json").read_text(encoding="utf-8"))
+    previous = json.loads((BASE_DIR / "experiment_results" / "stemming" / "best_config.json").read_text(encoding="utf-8"))
     best_previous = float(previous["validation_macro_f1"])
     selected = float(best["macro_f1"]) > best_previous
     summary = {
@@ -176,11 +176,11 @@ def main() -> None:
         final_model = MLPClassifier(**COMMON_PARAMS, **selected_params)
         final_model.fit(x_full, train_df["target"])
         pd.DataFrame(final_model.predict(x_test)).to_csv(
-            BASE_DIR / "predictions_mlp.csv", index=False, header=False
+            BASE_DIR / "prediction.csv", index=False, header=False
         )
-        summary["final_prediction_file"] = "predictions_mlp.csv"
+        summary["final_prediction_file"] = "prediction.csv"
     else:
-        summary["final_prediction_file"] = "predictions_stemming.csv"
+        summary["final_prediction_file"] = "prediction.csv"
 
     write_json(OUTPUT_DIR / "summary.json", summary)
     print(f"Selected: {summary['selected_model']}", flush=True)

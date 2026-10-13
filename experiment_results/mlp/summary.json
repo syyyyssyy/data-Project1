@@ -32,5 +32,5 @@
   "previous_best_macro_f1": 0.9488278011333442,
   "mlp_selected": false,
   "selected_model": "clean_headers__tfidf_50k_bigram_stop__LinearSVC__C-0.5__snowball_stemming",
-  "final_prediction_file": "predictions_stemming.csv"
+  "final_prediction_file": "prediction.csv"
 }

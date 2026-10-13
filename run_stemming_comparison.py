@@ -18,7 +18,7 @@ from run_experiment import BASE_DIR, RANDOM_STATE, RESULT_DIR, clean_headers, lo
 from third_party.snowball_english import EnglishStemmer
 
 
-STEM_RESULT_DIR = BASE_DIR / "stemming_results"
+STEM_RESULT_DIR = BASE_DIR / "experiment_results" / "stemming"
 
 
 class StemmedTokenizer:
@@ -176,7 +176,7 @@ def main() -> None:
     metadata["experiment_count"] = len(all_results)
     metadata["stemming_library"] = "snowballstemmer 3.1.1, English algorithm (vendored)"
     save_json(STEM_RESULT_DIR / "metadata.json", metadata)
-    pd.DataFrame(test_predictions).to_csv(BASE_DIR / "predictions_stemming.csv", index=False, header=False)
+    pd.DataFrame(test_predictions).to_csv(BASE_DIR / "prediction.csv", index=False, header=False)
     print(f"Selected {best_name}: macro-F1={best['macro_f1']:.4f}")
     print(f"Saved {len(all_results)} results and {len(test_predictions)} final predictions")
 

@@ -27,7 +27,7 @@ from sklearn.svm import LinearSVC
 
 RANDOM_STATE = 42
 BASE_DIR = Path(__file__).resolve().parent
-RESULT_DIR = BASE_DIR / "results"
+RESULT_DIR = BASE_DIR / "experiment_results" / "baseline"
 
 
 @dataclass(frozen=True)
@@ -53,8 +53,8 @@ HEADER_PREFIXES = (
 
 
 def load_data() -> tuple[pd.DataFrame, pd.DataFrame]:
-    train_path = BASE_DIR / "train_data.csv"
-    test_path = BASE_DIR / "test_data_unlabeled.csv"
+    train_path = BASE_DIR / "data" / "train_data.csv"
+    test_path = BASE_DIR / "data" / "test_data_unlabeled.csv"
     train_df = pd.read_csv(train_path)
     test_df = pd.read_csv(test_path)
     train_df["text"] = train_df["text"].astype(str)
@@ -336,7 +336,7 @@ def main() -> None:
     final_pipeline.fit(transform_texts(train_df["text"], best_exp.text_variant), train_df["target"])
     test_predictions = final_pipeline.predict(transform_texts(test_df["text"], best_exp.text_variant))
     pd.DataFrame(test_predictions).to_csv(
-        BASE_DIR / "predictions.csv",
+        RESULT_DIR / "predictions.csv",
         index=False,
         header=False,
     )
@@ -344,7 +344,7 @@ def main() -> None:
     print("\nBest configuration:")
     print(json.dumps(best_config, ensure_ascii=False, indent=2))
     print(f"Saved results to {RESULT_DIR}")
-    print(f"Saved final predictions to {BASE_DIR / 'predictions.csv'}")
+    print(f"Saved baseline predictions to {RESULT_DIR / 'predictions.csv'}")
 
 
 if __name__ == "__main__":
