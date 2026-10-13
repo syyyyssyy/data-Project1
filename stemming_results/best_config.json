@@ -1,0 +1,21 @@
+{
+  "name": "clean_headers__tfidf_50k_bigram_stop__LinearSVC__C-0.5__snowball_stemming",
+  "text_variant": "clean_headers",
+  "stemming": true,
+  "stemmer": "Snowball English 3.1.1",
+  "model": "LinearSVC",
+  "model_params": {
+    "C": 0.5
+  },
+  "vectorizer_params": {
+    "max_features": 50000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "sublinear_tf": true,
+    "stop_words": "english"
+  },
+  "validation_macro_f1": 0.9488278011333442
+}

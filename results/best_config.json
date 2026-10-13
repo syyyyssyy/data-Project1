@@ -1,0 +1,19 @@
+{
+  "name": "clean_headers__tfidf_50k_bigram_stop__LinearSVC__C-0.5",
+  "text_variant": "clean_headers",
+  "model": "LinearSVC",
+  "model_params": {
+    "C": 0.5
+  },
+  "vectorizer_params": {
+    "max_features": 50000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "sublinear_tf": true,
+    "stop_words": "english"
+  },
+  "validation_macro_f1": 0.9480635796099935
+}

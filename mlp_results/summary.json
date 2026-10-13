@@ -1,0 +1,36 @@
+{
+  "purpose": "Fixed MLP candidates compared on the existing Experiment 1 split",
+  "random_state": 42,
+  "train_split_rows": 5894,
+  "validation_rows": 1474,
+  "feature_method": "clean_headers + Snowball English + English stop words + TF-IDF",
+  "vectorizer_params": {
+    "max_features": 50000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "sublinear_tf": true,
+    "stop_words": "english"
+  },
+  "feature_count": 50000,
+  "feature_fit_seconds": 7.657714900095016,
+  "common_mlp_params": {
+    "solver": "adam",
+    "batch_size": 256,
+    "max_iter": 50,
+    "early_stopping": true,
+    "validation_fraction": 0.1,
+    "n_iter_no_change": 5,
+    "tol": 0.001,
+    "random_state": 42
+  },
+  "candidate_count": 3,
+  "best_mlp": "MLP_50_alpha_0.0001",
+  "best_mlp_macro_f1": 0.941570717712526,
+  "previous_best_macro_f1": 0.9488278011333442,
+  "mlp_selected": false,
+  "selected_model": "clean_headers__tfidf_50k_bigram_stop__LinearSVC__C-0.5__snowball_stemming",
+  "final_prediction_file": "predictions_stemming.csv"
+}

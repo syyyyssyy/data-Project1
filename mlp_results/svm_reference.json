@@ -1,0 +1,8 @@
+{
+  "model": "LinearSVC(C=0.5)",
+  "train_accuracy": 0.9989820156090939,
+  "train_macro_f1": 0.9989830401941017,
+  "validation_accuracy": 0.9484396200814111,
+  "validation_macro_f1": 0.9488278011333442,
+  "fit_seconds": 0.2080540000461042
+}

@@ -1,0 +1,11 @@
+{
+  "definition": "exact string after lowercasing and whitespace collapse; cleaned version first removes configured header lines",
+  "train_rows": 7368,
+  "test_rows": 2457,
+  "raw_duplicate_train_rows": 0,
+  "cleaned_duplicate_train_rows": 6,
+  "cleaned_distinct_texts_with_conflicting_labels": 0,
+  "raw_test_rows_matching_train": 0,
+  "cleaned_test_rows_matching_train": 3,
+  "seed42_validation_rows_matching_training_cleaned_text": 3
+}

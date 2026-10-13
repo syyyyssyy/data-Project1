@@ -1,0 +1,30 @@
+{
+  "seeds": [
+    42,
+    7,
+    21,
+    73,
+    101
+  ],
+  "split": "five stratified 80/20 holdouts; same fixed parameters and paired indices for both models",
+  "stemmed_validation_accuracy_mean": 0.9464043419267301,
+  "stemmed_validation_accuracy_sample_std": 0.0063460946180019335,
+  "stemmed_validation_accuracy_min": 0.9396200814111262,
+  "stemmed_validation_accuracy_max": 0.9545454545454546,
+  "stemmed_validation_macro_f1_mean": 0.9467448003745274,
+  "stemmed_validation_macro_f1_sample_std": 0.006247620850126009,
+  "stemmed_validation_macro_f1_min": 0.9397427084244206,
+  "stemmed_validation_macro_f1_max": 0.9547434228328673,
+  "stemmed_macro_f1_without_exact_overlap_mean": 0.946705146991041,
+  "stemmed_seed42_macro_f1_without_exact_overlap": 0.948746971238203,
+  "stemmed_seed42_accuracy_without_exact_overlap": 0.9483344663494222,
+  "plain_validation_macro_f1_mean": 0.945135821115171,
+  "stem_minus_plain_macro_f1_mean": 0.00160897925935648,
+  "stem_minus_plain_macro_f1_positive_splits": 5,
+  "stem_minus_plain_accuracy_mean": 0.0014925373134328402,
+  "test_prediction_all_five_agree_rows": 2340,
+  "test_prediction_at_least_four_agree_rows": 2413,
+  "test_prediction_total_rows": 2457,
+  "mean_agreement_with_full_train_submission": 0.983150183150183,
+  "note": "Prediction agreement is stability only, not unlabeled test accuracy; repeated holdouts overlap and are not independent test sets."
+}

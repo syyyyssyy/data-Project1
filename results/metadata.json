@@ -1,0 +1,25 @@
+{
+  "random_state": 42,
+  "mode": "full",
+  "train_rows": 7368,
+  "test_rows": 2457,
+  "train_split_rows": 5894,
+  "validation_rows": 1474,
+  "label_counts": {
+    "0": 730,
+    "1": 739,
+    "2": 737,
+    "3": 742,
+    "4": 747,
+    "5": 745,
+    "6": 743,
+    "7": 738,
+    "8": 742,
+    "9": 705
+  },
+  "python": "3.10.21",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "pandas": "2.3.3",
+  "numpy": "2.2.5",
+  "sklearn": "1.7.1"
+}
